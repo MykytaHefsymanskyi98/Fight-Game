@@ -11,10 +11,8 @@ public class CharacteristicScale : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valueText;
     [SerializeField] private Slider slider;
 
-    private const float SliderValueMultiplier = 100f;
-
     public void UpdateValueText()
     {
-        valueText.text = (slider.value * SliderValueMultiplier).ToString();
+        valueText.text = slider.value.ToString();
     }
 }
