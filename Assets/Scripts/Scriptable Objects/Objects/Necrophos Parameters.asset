@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a79e61566b52745acf30e65d2783aa, type: 3}
   m_Name: Necrophos Parameters
   m_EditorClassIdentifier: 
+  character: 2
   damageAmount: 40
   healthAmount: 80
   chanceToDecreaseIncomingDamage: 1

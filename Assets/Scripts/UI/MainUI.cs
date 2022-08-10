@@ -9,30 +9,43 @@ public class MainUI : MonoSingleton<MainUI>
     [Space]
     [SerializeField] private MainMenu mainMenuUI;
     [SerializeField] private CharacteristicsUI characteristicsUI;
-    [SerializeField] private BattleUI battleUI;
 
     #region Events Declaration
     public event Action OnStartGameButtonPressed;
+    public event Action<Characters> OnCharacterChoosen; 
 
     public void StartGameButtonPressedCommand()
     {
         OnStartGameButtonPressed?.Invoke();
     }
+
+    public void CharacterChoosenCommand(Characters character)
+    {
+        OnCharacterChoosen?.Invoke(character);
+    }
     #endregion Events Declaration
 
     private void Start()
     {
-        OnStartGameButtonPressed += StartButton_ButtonPressed_Reaction;
+        OnStartGameButtonPressed += StartButtonPressed_Reaction;
+        OnCharacterChoosen += CharacterChoosen_Reaction;
     }
 
     private void OnDestroy()
     {
-        OnStartGameButtonPressed -= StartButton_ButtonPressed_Reaction;
+        OnStartGameButtonPressed -= StartButtonPressed_Reaction;
+        OnCharacterChoosen -= CharacterChoosen_Reaction;
     }
 
-    private void StartButton_ButtonPressed_Reaction()
+    private void StartButtonPressed_Reaction()
     {
         mainMenuUI.HideMenu();
         characteristicsUI.ShowMenu();
+    }
+
+    private void CharacterChoosen_Reaction(Characters character)
+    {
+        characteristicsUI.HideMenu();
+        BattleUI.Instance.ShowMenu();
     }
 }

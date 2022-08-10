@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615666b4d53bcbc46895f5ca23a343a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ursaParametersSO: {fileID: 11400000, guid: 726e01f33ad7e7c4688b031f15d3336c, type: 2}
-  skywrathMageParametersSO: {fileID: 11400000, guid: 2e4184c9395af994f9cd763c05ad9ee7, type: 2}
-  necrophosParametersSO: {fileID: 11400000, guid: d03197f9f9577f44a9f8a107b1c05448, type: 2}
+  characterParametersSOList:
+  - {fileID: 11400000, guid: 726e01f33ad7e7c4688b031f15d3336c, type: 2}
+  - {fileID: 11400000, guid: 2e4184c9395af994f9cd763c05ad9ee7, type: 2}
+  - {fileID: 11400000, guid: d03197f9f9577f44a9f8a107b1c05448, type: 2}

@@ -12,12 +12,22 @@ public class BattleUI : MonoSingleton<BattleUI>
         SetContentActivationState(false);
     }
 
-    public void CashComponents()
+    public void ShowMenu()
+    {
+        SetContentActivationState(true);
+    }    
+
+    public void HideMenu()
+    {
+        SetContentActivationState(false);
+    }
+
+    private void CashComponents()
     {
         content = transform.GetChild(0);
     }
 
-    public void SetContentActivationState(bool isActive)
+    private void SetContentActivationState(bool isActive)
     {
         content.gameObject.SetActive(isActive);
     }

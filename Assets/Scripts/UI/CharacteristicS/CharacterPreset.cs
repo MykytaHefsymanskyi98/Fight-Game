@@ -18,18 +18,18 @@ public class CharacterPreset : MonoBehaviour
 
     private void Start()
     {
-        if(characterType == Characters.Ursa)
+        for(int i = 0; i < ReferencesHolder.Instance.CharacterParametersSOList.Count; i++)
         {
-            SetCharacterParameters(ReferencesHolder.Instance.UrsaParametersSO);
+            if(ReferencesHolder.Instance.CharacterParametersSOList[i].Character == characterType)
+            {
+                SetCharacterParameters(ReferencesHolder.Instance.CharacterParametersSOList[i]); 
+            }
         }
-        else if(characterType == Characters.SkywrathMage)
-        {
-            SetCharacterParameters(ReferencesHolder.Instance.SkywrathMageParametersSO);
-        }
-        else if(characterType == Characters.Necrophos)
-        {
-            SetCharacterParameters(ReferencesHolder.Instance.NecrophosParametersSO);
-        }
+    }
+
+    public void ConfirmButtonPressed()
+    {
+        MainUI.Instance.CharacterChoosenCommand(characterType);
     }
 
     private void SetCharacterParameters(CharacterParametersSO parametersSO)
