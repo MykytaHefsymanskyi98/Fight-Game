@@ -27,15 +27,6 @@ public class SpliterManager
 			alignment = splitter.TextAlignment
 		};
 
-		//if (spliter.Extend)
-		//{
-		//	var parentsCount = spliter.transform.GetParentsCount();
-
-		//	var offset = parentsCount * 14;
-		//	selectionRect.x -= offset + 27.5f;
-		//	selectionRect.width += offset + 43;
-		//}
-
 		EditorGUI.DrawRect(selectionRect, splitter.BackgroundColor);
 		EditorGUI.LabelField(selectionRect, splitter.name, style);
 	}
