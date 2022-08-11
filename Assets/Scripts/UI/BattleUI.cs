@@ -23,6 +23,8 @@ public class BattleUI : MonoSingleton<BattleUI>
     [SerializeField] private string attackText = $"Attack";
     [SerializeField] private string guardText = $"Guard";
     [SerializeField] private string healText = $"Heal";
+    [SerializeField] private string CriticalDamageText = $"CriticalDamage";
+    [SerializeField] private string AdditionalDeffenceText = $"AdditionalDeffence";
     [Space]
     [SerializeField] private string winText = $"You Win";
     [SerializeField] private string loseText = $"You Lose";
@@ -102,26 +104,50 @@ public class BattleUI : MonoSingleton<BattleUI>
         enemyHealthBar.UpdateHealthBar(value);
     }
 
+    public void ShowCriticalDamageText(bool playerText)
+    {
+        if(playerText)
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(CriticalDamageText, playerCombatText));
+        }
+        else
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(CriticalDamageText, enemyCombatText));
+        }
+    }
+
+    public void ShowAdditionalDeffenceText(bool playerText)
+    {
+        if(playerText)
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, playerCombatText));
+        }
+        else
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, enemyCombatText));
+        }
+    }
+
     #region Buttons Methods
     public void AttackButtonPressed()
     {
         SetButtonsActivationState(false);
         AttackButtonPressedCommand();
-        StartCoroutine(ShowCombatActionTextCoroutine(attackText));
+       
     }
 
     public void GuardButtonPressed()
     {
         SetButtonsActivationState(false);
         GuardButtonPressedCommand();
-        StartCoroutine(ShowCombatActionTextCoroutine(guardText));
+       
     }
 
     public void HealButtonPressed()
     {
         SetButtonsActivationState(false);
         HealButtonPressedCommand();
-        StartCoroutine(ShowCombatActionTextCoroutine(healText));
+        
     }
 
     public void SetButtonsActivationState(bool isActive)
@@ -165,10 +191,10 @@ public class BattleUI : MonoSingleton<BattleUI>
         battleResultText.text = winText;
     }
 
-    private IEnumerator ShowCombatActionTextCoroutine(string combatText)
+    private IEnumerator ShowCombatActionTextCoroutine(string combatText, TextMeshProUGUI characterText)
     {
-        playerCombatText.text = combatText;
+        characterText.text = combatText;
         yield return new WaitForSeconds(hideCombatTextDelay);
-        playerCombatText.text = $"";
+        characterText.text = $"";
     }
 }

@@ -17,7 +17,16 @@ public class PlayerCombatManager : CombatManager
     public float GetDamageDealt()
     {
         float currentDamage = 0f;
-        currentDamage = DamageAmount;
+
+        if(DoubleDamageActive())
+        {
+            currentDamage = DamageAmount * Multiplyers.DamageMultiplyer;
+            BattleUI.Instance.ShowCriticalDamageText(true);
+        }
+        else
+        {
+            currentDamage = DamageAmount;
+        }
 
         return currentDamage;
     }
@@ -35,6 +44,20 @@ public class PlayerCombatManager : CombatManager
         {
             BattleController.Instance.PlayerOutOfHPCommand();
             BattleUI.Instance.UpdatePlayerHealthBar(0f);
+        }
+    }
+
+    private bool DoubleDamageActive()
+    {
+        int tempValue = UnityEngine.Random.Range(0, Multiplyers.ChanceMultiplyer);
+        
+        if (tempValue * Multiplyers.ChanceMultiplyer <= DoubleDamageDealtChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

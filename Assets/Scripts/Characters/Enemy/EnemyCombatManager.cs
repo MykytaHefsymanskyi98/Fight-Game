@@ -52,8 +52,32 @@ public class EnemyCombatManager : CombatManager
 
     public float GetDamageDealt()
     {
-        float damageAtAttack = DamageAmount;
+        float damageAtAttack;
+
+        if (DoubleDamageActive())
+        {
+            damageAtAttack = DamageAmount * Multiplyers.DamageMultiplyer;
+            BattleUI.Instance.ShowCriticalDamageText(false);
+        }
+        else
+        {
+            damageAtAttack = DamageAmount;
+        }
 
         return damageAtAttack;
+    }
+
+    private bool DoubleDamageActive()
+    {
+        int tempValue = UnityEngine.Random.Range(0, Multiplyers.ChanceMultiplyer);
+
+        if (tempValue * Multiplyers.ChanceMultiplyer <= DoubleDamageDealtChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
