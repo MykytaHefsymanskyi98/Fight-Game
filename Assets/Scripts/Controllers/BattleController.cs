@@ -23,6 +23,7 @@ public class BattleController : MonoSingleton<BattleController>
     public event Action OnPlayerOutOfHP;
     public event Action OnEnemyOutOfHP;
     public event Action OnPlayerUsedGuard;
+    public event Action OnPlayerUsedHealAction;
 
     public void PlayerAttackFinishedCommand(float damage)
     {
@@ -52,6 +53,8 @@ public class BattleController : MonoSingleton<BattleController>
     private void PlayerTurnStartCommand()
     {
         OnPlayerTurnStart?.Invoke();
+        currentTurnNumber++;
+        BattleUI.Instance.UpdateTurnText(currentTurnNumber);
     }
 
     public void PlayerOutOfHPCommand()
@@ -68,6 +71,11 @@ public class BattleController : MonoSingleton<BattleController>
     {
         OnPlayerUsedGuard?.Invoke();
         playerUsedGuard = true;
+        StartCoroutine(StartEnemyTurnCoroutine());
+    }
+
+    public void PlayerUsedHealingCommand()
+    {
         StartCoroutine(StartEnemyTurnCoroutine());
     }
     #endregion Events Methods

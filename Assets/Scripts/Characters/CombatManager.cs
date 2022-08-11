@@ -11,12 +11,18 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private float currentHealthAmount = 10f;
     [SerializeField] private float decreaseDamageChance = 10f;
     [SerializeField] private float doubleDamageDealtChance = 10f;
+    [Header("Heal Data")]
+    [Space]
+    [SerializeField] private float healDivisor = 3;
+
+    private float healAmount;
 
     public float DamageAmount { get => damageAmount; set => damageAmount = value; }
     public float StartHealthAmount { get => startHealthAmount; set => startHealthAmount = value; }
     public float CurrentHealthAmount { get => currentHealthAmount; set => currentHealthAmount = value; }
     public float DecreaseDamageChance { get => decreaseDamageChance; set => decreaseDamageChance = value; }
     public float DoubleDamageDealtChance { get => doubleDamageDealtChance; set => doubleDamageDealtChance = value; }
+    public float HealAmount { get => healAmount; private set => healAmount = value; }
 
     public void SetCharacterCombatData(Characters character)
     {
@@ -36,5 +42,7 @@ public class CombatManager : MonoBehaviour
         CurrentHealthAmount = StartHealthAmount;
         DecreaseDamageChance = parametersSO.ChanceToDecreaseIncomingDamage;
         DoubleDamageDealtChance = parametersSO.ChanceToIncreaseDamageDealt;
+
+        HealAmount = StartHealthAmount / healDivisor;
     }
 }

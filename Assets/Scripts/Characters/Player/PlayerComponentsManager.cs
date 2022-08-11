@@ -78,6 +78,7 @@ public class PlayerComponentsManager : MonoBehaviour
     private void BattleUI_HealButtonPressed_Reaction()
     {
         animationManager.SetHealState();
+        combatManager.Heal();
     }
 
     private void BattleController_EnemyAttackFinished_Reaction(float damage)

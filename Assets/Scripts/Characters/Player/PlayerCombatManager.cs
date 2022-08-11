@@ -69,6 +69,15 @@ public class PlayerCombatManager : CombatManager
         guardActive = true;
     }
 
+    public void Heal()
+    {
+        CurrentHealthAmount += HealAmount;
+        CurrentHealthAmount = Math.Clamp(CurrentHealthAmount, 0f, StartHealthAmount); 
+        float changedValue = CurrentHealthAmount.Remap(0, StartHealthAmount, 0, 1f);
+        BattleUI.Instance.UpdatePlayerHealthBar(changedValue);
+        BattleController.Instance.PlayerUsedHealingCommand();
+    }
+
     private bool DoubleDamageActive()
     {
         int tempValue = UnityEngine.Random.Range(0, Multiplyers.ChanceMultiplyer);
