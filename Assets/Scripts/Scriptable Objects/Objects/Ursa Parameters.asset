@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ursa Parameters
   m_EditorClassIdentifier: 
   character: 0
-  damageAmount: 40
-  healthAmount: 50
+  damageAmount: 30
+  healthAmount: 70
   chanceToDecreaseIncomingDamage: 10
   chanceToIncreaseDamageDealt: 40

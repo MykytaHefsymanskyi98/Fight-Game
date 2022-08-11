@@ -21,7 +21,8 @@ public class BattleUI : MonoSingleton<BattleUI>
     [Header("Combat Texts")]
     [Space]
     [SerializeField] private string attackText = $"Attack";
-    [SerializeField] private string guardText = $"Guard";
+    [SerializeField] private string guardText = $"Guard Activated";
+    [SerializeField] private string blockedText = $"Blocked";
     [SerializeField] private string healText = $"Heal";
     [SerializeField] private string CriticalDamageText = $"CriticalDamage";
     [SerializeField] private string AdditionalDeffenceText = $"AdditionalDeffence";
@@ -125,6 +126,30 @@ public class BattleUI : MonoSingleton<BattleUI>
         else
         {
             StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, enemyCombatText));
+        }
+    }
+
+    public void ShowGuardText(bool playerText)
+    {
+        if (playerText)
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(guardText, playerCombatText));
+        }
+        else
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(guardText, enemyCombatText));
+        }
+    }
+
+    public void ShowBlockedText(bool playerText)
+    {
+        if (playerText)
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(blockedText, playerCombatText));
+        }
+        else
+        {
+            StartCoroutine(ShowCombatActionTextCoroutine(blockedText, enemyCombatText));
         }
     }
 

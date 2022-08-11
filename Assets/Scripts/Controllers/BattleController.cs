@@ -13,6 +13,7 @@ public class BattleController : MonoSingleton<BattleController>
     [SerializeField] private float characterTurnDelay = 1f;
 
     private bool playerTurn = true;
+    private bool playerUsedGuard = false;
 
     #region Events Methods
     public event Action<float> OnPlayerAttackFinished;
@@ -20,7 +21,8 @@ public class BattleController : MonoSingleton<BattleController>
     public event Action OnEnemyTurnStart;
     public event Action OnPlayerTurnStart;
     public event Action OnPlayerOutOfHP;
-    public event Action OnEnemyOutOfHP; 
+    public event Action OnEnemyOutOfHP;
+    public event Action OnPlayerUsedGuard;
 
     public void PlayerAttackFinishedCommand(float damage)
     {
@@ -31,7 +33,15 @@ public class BattleController : MonoSingleton<BattleController>
     public void EnemyAttackFinishedCommand(float damage)
     {
         OnEnemyAttackFinished?.Invoke(damage);
-        StartCoroutine(StartPlayerTurnCoroutine());
+        if(!playerUsedGuard)
+        {
+            StartCoroutine(StartPlayerTurnCoroutine());
+        }
+        else
+        {
+            playerUsedGuard = false;
+            StartCoroutine(StartEnemyTurnCoroutine());
+        }
     }
 
     private void EnemyTurnStartCommand()
@@ -52,6 +62,13 @@ public class BattleController : MonoSingleton<BattleController>
     public void EnemyOutOfHPCommad()
     {
         OnEnemyOutOfHP?.Invoke();
+    }
+
+    public void PlayerUsedGuardCommand()
+    {
+        OnPlayerUsedGuard?.Invoke();
+        playerUsedGuard = true;
+        StartCoroutine(StartEnemyTurnCoroutine());
     }
     #endregion Events Methods
 

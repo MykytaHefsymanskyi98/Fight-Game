@@ -2193,6 +2193,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7016011275670670499, guid: 86190d4a7e3c71941aeaa0136fd6fd7e, type: 3}
+      propertyPath: guardText
+      value: Guard Activated
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016011275670670499, guid: 86190d4a7e3c71941aeaa0136fd6fd7e, type: 3}
       propertyPath: CriticalDamageText
       value: Critical Damage Dealt
       objectReference: {fileID: 0}

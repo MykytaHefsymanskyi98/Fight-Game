@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Monster Parameters
   m_EditorClassIdentifier: 
   character: 3
-  damageAmount: 30
+  damageAmount: 20
   healthAmount: 80
   chanceToDecreaseIncomingDamage: 10
   chanceToIncreaseDamageDealt: 10

@@ -70,6 +70,9 @@ public class PlayerComponentsManager : MonoBehaviour
     private void BattleUI_GuardButtonPressed_Reaction()
     {
         animationManager.SetGuardState();
+        combatManager.GuardActivation();
+        BattleUI.Instance.ShowGuardText(true);
+        BattleController.Instance.PlayerUsedGuardCommand();
     }
 
     private void BattleUI_HealButtonPressed_Reaction()

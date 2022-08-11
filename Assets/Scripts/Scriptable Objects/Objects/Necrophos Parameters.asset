@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Necrophos Parameters
   m_EditorClassIdentifier: 
   character: 2
-  damageAmount: 40
+  damageAmount: 20
   healthAmount: 80
   chanceToDecreaseIncomingDamage: 60
   chanceToIncreaseDamageDealt: 10
