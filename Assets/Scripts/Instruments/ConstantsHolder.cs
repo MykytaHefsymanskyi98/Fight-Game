@@ -7,7 +7,7 @@ public class Layers
     
 }
 
-public class ConstantsHolder : MonoBehaviour
+public class Animations
 {
-    
+    public const string Attack = "Attack";
 }
