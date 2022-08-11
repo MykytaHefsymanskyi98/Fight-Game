@@ -18,4 +18,6 @@ public class Multiplyers
 {
     public const int ChanceMultiplyer = 10;
     public const int DamageMultiplyer = 2;
+    public const int DamagedDecreasedMultiplyer = 80;
+    public const int DamagedMaxMultiplyer = 100;
 }

@@ -37,6 +37,13 @@ public class PlayerCombatManager : CombatManager
     {
         if(!guardActive)
         {
+            if(DecreasedDamageActive())
+            {
+                // Multiplyers.DamagedDecreasedMultiplyer - 80% of damage, Multiplyers.DamagedMaxMultiplyer - 100% damage: Decreased damage calculation
+                damage = (damage * Multiplyers.DamagedDecreasedMultiplyer) / Multiplyers.DamagedMaxMultiplyer;
+                BattleUI.Instance.ShowDamageDecreasedText(true);
+            }
+
             CurrentHealthAmount -= damage;
             if (CurrentHealthAmount > 0)
             {
@@ -67,6 +74,20 @@ public class PlayerCombatManager : CombatManager
         int tempValue = UnityEngine.Random.Range(0, Multiplyers.ChanceMultiplyer);
         
         if (tempValue * Multiplyers.ChanceMultiplyer <= DoubleDamageDealtChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool DecreasedDamageActive()
+    {
+        int tempValue = UnityEngine.Random.Range(0, Multiplyers.ChanceMultiplyer);
+
+        if (tempValue * Multiplyers.ChanceMultiplyer <= DecreaseDamageChance)
         {
             return true;
         }

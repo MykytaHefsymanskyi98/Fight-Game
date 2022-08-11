@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack
+  m_text: Critical Damage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -789,8 +789,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1597,7 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 2560665933191435404}
-  updateSpeed: 5
+  updateSpeed: 4
 --- !u!1 &4365279935183613146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 959030056}
-  updateSpeed: 5
+  updateSpeed: 4
 --- !u!1 &7016011275447223488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,11 +1998,15 @@ MonoBehaviour:
   playerHealthBar: {fileID: 161387671}
   enemyHealthBar: {fileID: 1912172323}
   attackText: Attack
-  guardText: Guard
+  guardText: Guard Activated
+  blockedText: Blocked
+  DamageDecreasedText: Damage Decreased
   healText: Heal
+  CriticalDamageText: Critical Damage Dealt
+  AdditionalDeffenceText: Additional Deffence Activated
   winText: You Win
   loseText: You Lose
-  hideCombatTextDelay: 1
+  hideCombatTextDelay: 2
 --- !u!1 &7016011275875563681
 GameObject:
   m_ObjectHideFlags: 0

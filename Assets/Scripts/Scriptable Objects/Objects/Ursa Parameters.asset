@@ -15,5 +15,5 @@ MonoBehaviour:
   character: 0
   damageAmount: 30
   healthAmount: 70
-  chanceToDecreaseIncomingDamage: 10
+  chanceToDecreaseIncomingDamage: 20
   chanceToIncreaseDamageDealt: 40
