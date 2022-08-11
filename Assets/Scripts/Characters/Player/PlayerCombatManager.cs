@@ -76,6 +76,7 @@ public class PlayerCombatManager : CombatManager
         float changedValue = CurrentHealthAmount.Remap(0, StartHealthAmount, 0, 1f);
         BattleUI.Instance.UpdatePlayerHealthBar(changedValue);
         BattleController.Instance.PlayerUsedHealingCommand();
+        BattleUI.Instance.ShowHealText(true);
     }
 
     private bool DoubleDamageActive()

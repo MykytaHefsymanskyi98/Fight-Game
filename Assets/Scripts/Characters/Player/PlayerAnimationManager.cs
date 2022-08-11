@@ -40,4 +40,9 @@ public class PlayerAnimationManager : MonoBehaviour
     {
         animator.SetTrigger(Animations.Hurt);
     }
+
+    public void SetLoseState()
+    {
+        animator.SetTrigger(Animations.Lose);
+    }
 }

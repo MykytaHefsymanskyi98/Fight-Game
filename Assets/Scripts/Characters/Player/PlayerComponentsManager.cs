@@ -99,6 +99,6 @@ public class PlayerComponentsManager : MonoBehaviour
 
     private void CombatManager_OutOfHP_Reaction()
     {
-        gameObject.SetActive(false);
+        animationManager.SetLoseState();
     }
 }

@@ -12,6 +12,7 @@ public class Animations
     public const string Attack = "Attack";
     public const string Hurt = "Hurt";
     public const string Block = "Block";
+    public const string Lose = "Lose";
 }
 
 public class Multiplyers

@@ -5,6 +5,10 @@ using System;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
+    private bool gameOver = false;
+        
+    public bool GameOver { get => gameOver; set => gameOver = value; }
+
     private void Start()
     {
         BattleController.Instance.OnEnemyOutOfHP += PlayerWin;
@@ -22,11 +26,11 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     private void PlayerWin()
     {
-
+        gameOver = true;
     }
 
     private void PlayerLose()
     {
-
+        gameOver = true;
     }
 }

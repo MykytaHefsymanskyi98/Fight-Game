@@ -38,6 +38,9 @@ public class BattleUI : MonoSingleton<BattleUI>
 
     private Transform content;
 
+    private Coroutine playerTextCoroutine;
+    private Coroutine enemyTextCoroutine;
+
     #region Events Declaration
     public event Action OnAttackButtonPressed;
     public event Action OnGuardButtonPressed;
@@ -110,11 +113,11 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         if(playerText)
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(CriticalDamageText, playerCombatText));
+            playerTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(CriticalDamageText, playerCombatText));
         }
         else
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(CriticalDamageText, enemyCombatText));
+            enemyTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(CriticalDamageText, enemyCombatText));
         }
     }
 
@@ -122,11 +125,11 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         if(playerText)
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, playerCombatText));
+            playerTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, playerCombatText));
         }
         else
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, enemyCombatText));
+            enemyTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(AdditionalDeffenceText, enemyCombatText));
         }
     }
 
@@ -134,11 +137,11 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         if (playerText)
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(guardText, playerCombatText));
+            playerTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(guardText, playerCombatText));
         }
         else
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(guardText, enemyCombatText));
+            enemyTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(guardText, enemyCombatText));
         }
     }
 
@@ -146,11 +149,11 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         if (playerText)
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(blockedText, playerCombatText));
+            playerTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(blockedText, playerCombatText));
         }
         else
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(blockedText, enemyCombatText));
+            enemyTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(blockedText, enemyCombatText));
         }
     }
 
@@ -158,11 +161,23 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         if (playerText)
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(DamageDecreasedText, playerCombatText));
+            playerTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(DamageDecreasedText, playerCombatText));
         }
         else
         {
-            StartCoroutine(ShowCombatActionTextCoroutine(DamageDecreasedText, enemyCombatText));
+            enemyTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(DamageDecreasedText, enemyCombatText));
+        }
+    }
+
+    public void ShowHealText(bool playerText)
+    {
+        if (playerText)
+        {
+            playerTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(healText, playerCombatText));
+        }
+        else
+        {
+            enemyTextCoroutine = StartCoroutine(ShowCombatActionTextCoroutine(healText, enemyCombatText));
         }
     }
 
@@ -222,11 +237,13 @@ public class BattleUI : MonoSingleton<BattleUI>
     private void BattleController_PlayerOutOfHP_Reaction()
     {
         battleResultText.text = loseText;
+        SetButtonsActivationState(false);
     }
 
     private void BattleController_EnemyOutOfHP_Reaction()
     {
         battleResultText.text = winText;
+        SetButtonsActivationState(false);
     }
 
     private IEnumerator ShowCombatActionTextCoroutine(string combatText, TextMeshProUGUI characterText)

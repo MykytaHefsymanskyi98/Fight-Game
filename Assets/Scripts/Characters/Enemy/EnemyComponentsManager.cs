@@ -19,9 +19,10 @@ public class EnemyComponentsManager : MonoBehaviour
     {
         BattleController.Instance.OnPlayerAttackFinished += BattleController_PlayerFinishedAttack_Reaction;
         BattleController.Instance.OnEnemyTurnStart += BattleController_StartEnemyTurn_Reaction;
+        BattleController.Instance.OnEnemyOutOfHP += CombatManager_OutOfHP_Reaction;
+        BattleController.Instance.OnEnemyUsedHealAction += BattleController_UsedHealedAction_Reaction;
 
         combatManager.OnDamageTaken += CombatManager_DamageTaken_Reaction;
-        BattleController.Instance.OnEnemyOutOfHP += CombatManager_OutOfHP_Reaction;
         combatManager.OnAttackAction += CombatManager_AttackAction_Reaction;
 
         animationManager.OnAttackFinished += AnimationManager_AttackFinished_Reaction;
@@ -34,6 +35,7 @@ public class EnemyComponentsManager : MonoBehaviour
             BattleController.Instance.OnPlayerAttackFinished -= BattleController_PlayerFinishedAttack_Reaction;
             BattleController.Instance.OnEnemyTurnStart -= BattleController_StartEnemyTurn_Reaction;
             BattleController.Instance.OnEnemyOutOfHP -= CombatManager_OutOfHP_Reaction;
+            BattleController.Instance.OnEnemyUsedHealAction -= BattleController_UsedHealedAction_Reaction;
         }
 
         combatManager.OnDamageTaken -= CombatManager_DamageTaken_Reaction;
@@ -52,6 +54,11 @@ public class EnemyComponentsManager : MonoBehaviour
         combatManager.ChooseCombatAction();
     }
 
+    private void BattleController_UsedHealedAction_Reaction()
+    {
+        animationManager.SetHealState();
+    }
+
     private void CombatManager_DamageTaken_Reaction()
     {
         animationManager.SetHurtState();
@@ -59,7 +66,7 @@ public class EnemyComponentsManager : MonoBehaviour
 
     private void CombatManager_OutOfHP_Reaction()
     {
-        gameObject.SetActive(false);
+        animationManager.SetLoseState();
     }
 
     private void CombatManager_AttackAction_Reaction()

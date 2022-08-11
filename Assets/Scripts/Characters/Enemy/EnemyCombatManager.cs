@@ -9,6 +9,10 @@ public class EnemyCombatManager : CombatManager
     [Space]
     [SerializeField] private Characters character = Characters.Monster;
 
+    private bool alive = true;
+
+    public bool Alive { get => alive; private set => alive = value; }
+
     #region Events Methods
     public event Action OnDamageTaken;
     public event Action OnAttackAction;
@@ -47,6 +51,7 @@ public class EnemyCombatManager : CombatManager
         }
         else
         {
+            alive = false;
             BattleController.Instance.EnemyOutOfHPCommad();
             BattleUI.Instance.UpdateEnemyHealthBar(0f);
         }
@@ -54,7 +59,22 @@ public class EnemyCombatManager : CombatManager
 
     public void ChooseCombatAction()
     {
-        AttackActionCommand();
+        if (CurrentHealthAmount < StartHealthAmount / HealMinTreshold && alive)
+        {
+            int tempValue = UnityEngine.Random.Range(0, 1);
+            if(tempValue == 0)
+            {
+                Heal();
+            }
+            else
+            {
+                AttackActionCommand();
+            }
+        }
+        else
+        {
+            AttackActionCommand();
+        }
     }
 
     public float GetDamageDealt()
@@ -100,5 +120,15 @@ public class EnemyCombatManager : CombatManager
         {
             return false;
         }
+    }
+
+    private void Heal()
+    {
+        CurrentHealthAmount += HealAmount;
+        CurrentHealthAmount = Math.Clamp(CurrentHealthAmount, 0f, StartHealthAmount);
+        float changedValue = CurrentHealthAmount.Remap(0, StartHealthAmount, 0, 1f);
+        BattleUI.Instance.UpdateEnemyHealthBar(changedValue);
+        BattleController.Instance.EnemyUsedHealActionCommand();
+        BattleUI.Instance.ShowHealText(false);
     }
 }

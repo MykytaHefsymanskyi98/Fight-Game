@@ -14,6 +14,7 @@ public class CombatManager : MonoBehaviour
     [Header("Heal Data")]
     [Space]
     [SerializeField] private float healDivisor = 3;
+    [SerializeField] private float healMinTreshold = 3;
 
     private float healAmount;
 
@@ -23,6 +24,7 @@ public class CombatManager : MonoBehaviour
     public float DecreaseDamageChance { get => decreaseDamageChance; set => decreaseDamageChance = value; }
     public float DoubleDamageDealtChance { get => doubleDamageDealtChance; set => doubleDamageDealtChance = value; }
     public float HealAmount { get => healAmount; private set => healAmount = value; }
+    public float HealMinTreshold { get => healMinTreshold; set => healMinTreshold = value; }
 
     public void SetCharacterCombatData(Characters character)
     {
