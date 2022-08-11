@@ -10,6 +10,8 @@ public class PlayerModelsHolder : MonoBehaviour
 
     private PlayerCharacterModel currentModel;
 
+    public PlayerCharacterModel CurrentModel { get => currentModel; private set => currentModel = value; }
+
     private void Awake()
     {
         FillModelsList();
@@ -21,8 +23,8 @@ public class PlayerModelsHolder : MonoBehaviour
         {
             if(playerModelsList[i].CharacterType == character)
             {
-                currentModel = playerModelsList[i];
-                currentModel.gameObject.SetActive(true);
+                CurrentModel = playerModelsList[i];
+                CurrentModel.gameObject.SetActive(true);
             }
         }
     }
