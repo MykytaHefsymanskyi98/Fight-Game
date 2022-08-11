@@ -70,6 +70,16 @@ public class BattleUI : MonoSingleton<BattleUI>
         turnText.text = $"{TurnString} {turnNumber}";
     }
 
+    public void UpdatePlayerHealthBar(float value)
+    {
+
+    }
+
+    public void UpdateEnemyHealthBar(float value)
+    {
+
+    }
+
     #region Buttons Methods
     public void AttackButtonPressed()
     {

@@ -9,10 +9,11 @@ public class PlayerComponentsManager : MonoBehaviour
     [SerializeField] private PlayerModelsHolder modelsHolder;
 
     private PlayerAnimationManager animationManager;
+    private PlayerCombatManager combatManager;
 
     private void Awake()
     {
-        animationManager = GetComponent<PlayerAnimationManager>();
+        combatManager = GetComponent<PlayerCombatManager>();
     }
 
     private void Start()
@@ -46,6 +47,7 @@ public class PlayerComponentsManager : MonoBehaviour
     {
         modelsHolder.SetCharacterModel(character);
         animationManager = modelsHolder.CurrentModel.GetComponent<PlayerAnimationManager>();
+        combatManager.SetCharacterCombatData(character);
     }
 
     private void BattleUI_AttackButtonPressed_Reaction()
@@ -65,6 +67,7 @@ public class PlayerComponentsManager : MonoBehaviour
 
     private void AnimationManager_AttackFinished_Reaction()
     {
-
+        float damageAtAttack = combatManager.GetDamageDealt();
+        BattleController.Instance.PlayerAttackFinishedCommand(damageAtAttack);
     }
 }

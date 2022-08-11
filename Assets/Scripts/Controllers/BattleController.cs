@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BattleController : MonoSingleton<BattleController>
 {
@@ -9,6 +10,15 @@ public class BattleController : MonoSingleton<BattleController>
     [SerializeField] private int currentTurnNumber = 1;
 
     private bool playerTurn = false;
+
+    #region Events Methods
+    public event Action<float> OnPlayerAttackFinished;
+
+    public void PlayerAttackFinishedCommand(float damage)
+    {
+        OnPlayerAttackFinished?.Invoke(damage);
+    }
+    #endregion Events Methods
 
     private void Start()
     {
