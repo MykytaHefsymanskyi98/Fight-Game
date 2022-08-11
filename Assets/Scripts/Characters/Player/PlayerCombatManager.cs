@@ -1,42 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class PlayerCombatManager : MonoBehaviour
+public class PlayerCombatManager : CombatManager
 {
-    [Header("Combat Data")]
-    [Space]
-    [SerializeField] private float damageAmount = 10f;
-    [SerializeField] private float startHealthAmount = 10f;
-    [SerializeField] private float currentHealthAmount = 10f;
-    [SerializeField] private float decreaseDamageChance = 10f;
-    [SerializeField] private float doubleDamageDealtChance = 10f;
+    #region Events Methods
+    public event Action OnDamageTaken;
 
-    public void SetCharacterCombatData(Characters character)
+    private void DamageTakenCommand()
     {
-        for (int i = 0; i < ReferencesHolder.Instance.CharacterParametersSOList.Count; i++)
-        {
-            if (ReferencesHolder.Instance.CharacterParametersSOList[i].Character == character)
-            {
-                SetCharacterParameters(ReferencesHolder.Instance.CharacterParametersSOList[i]);
-            }
-        }
+        OnDamageTaken?.Invoke();
     }
-
-    private void SetCharacterParameters(CharacterParametersSO parametersSO)
-    {
-        damageAmount = parametersSO.DamageAmount;
-        startHealthAmount = parametersSO.HealthAmount;
-        currentHealthAmount = startHealthAmount;
-        decreaseDamageChance = parametersSO.ChanceToDecreaseIncomingDamage;
-        doubleDamageDealtChance = parametersSO.ChanceToIncreaseDamageDealt;
-    }
+    #endregion Events Methods
 
     public float GetDamageDealt()
     {
         float currentDamage = 0f;
-        currentDamage = damageAmount;
+        currentDamage = DamageAmount;
 
         return currentDamage;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        CurrentHealthAmount -= damage;
+        if (CurrentHealthAmount > 0)
+        {
+            DamageTakenCommand();
+        }
+        else
+        {
+            BattleController.Instance.PlayerOutOfHPCommand();
+        }
     }
 }

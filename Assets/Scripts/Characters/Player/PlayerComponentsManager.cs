@@ -24,7 +24,10 @@ public class PlayerComponentsManager : MonoBehaviour
         BattleUI.Instance.OnGuardButtonPressed += BattleUI_GuardButtonPressed_Reaction;
         BattleUI.Instance.OnHealButtonPressed += BattleUI_HealButtonPressed_Reaction;
 
-        animationManager.OnAttackFinished += AnimationManager_AttackFinished_Reaction;
+        BattleController.Instance.OnEnemyAttackFinished += BattleController_EnemyAttackFinished_Reaction;
+
+        combatManager.OnDamageTaken += CombatManager_DamageTaken_Reaction;
+        BattleController.Instance.OnPlayerOutOfHP += CombatManager_OutOfHP_Reaction;
     }
 
     private void OnDestroy()
@@ -39,8 +42,15 @@ public class PlayerComponentsManager : MonoBehaviour
             BattleUI.Instance.OnGuardButtonPressed -= BattleUI_GuardButtonPressed_Reaction;
             BattleUI.Instance.OnHealButtonPressed -= BattleUI_HealButtonPressed_Reaction;
         }
+        if(BattleController.Instance)
+        {
+            BattleController.Instance.OnEnemyAttackFinished -= BattleController_EnemyAttackFinished_Reaction;
+            BattleController.Instance.OnPlayerOutOfHP -= CombatManager_OutOfHP_Reaction;
+        }
 
         animationManager.OnAttackFinished -= AnimationManager_AttackFinished_Reaction;
+
+        combatManager.OnDamageTaken -= CombatManager_DamageTaken_Reaction;
     }
 
     private void MainUI_CharacterChoosen_Reaction(Characters character)
@@ -48,6 +58,8 @@ public class PlayerComponentsManager : MonoBehaviour
         modelsHolder.SetCharacterModel(character);
         animationManager = modelsHolder.CurrentModel.GetComponent<PlayerAnimationManager>();
         combatManager.SetCharacterCombatData(character);
+
+        animationManager.OnAttackFinished += AnimationManager_AttackFinished_Reaction;
     }
 
     private void BattleUI_AttackButtonPressed_Reaction()
@@ -65,9 +77,24 @@ public class PlayerComponentsManager : MonoBehaviour
         animationManager.SetHealState();
     }
 
+    private void BattleController_EnemyAttackFinished_Reaction(float damage)
+    {
+        combatManager.TakeDamage(damage);
+    }
+
     private void AnimationManager_AttackFinished_Reaction()
     {
         float damageAtAttack = combatManager.GetDamageDealt();
         BattleController.Instance.PlayerAttackFinishedCommand(damageAtAttack);
+    }
+
+    private void CombatManager_DamageTaken_Reaction()
+    {
+        animationManager.SetHurtState();
+    }
+
+    private void CombatManager_OutOfHP_Reaction()
+    {
+        gameObject.SetActive(false);
     }
 }

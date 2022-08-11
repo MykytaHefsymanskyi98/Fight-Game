@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Swkywrath Mage Parameters
   m_EditorClassIdentifier: 
   character: 1
-  damageAmount: 60
-  healthAmount: 60
+  damageAmount: 30
+  healthAmount: 30
   chanceToDecreaseIncomingDamage: 30
   chanceToIncreaseDamageDealt: 30

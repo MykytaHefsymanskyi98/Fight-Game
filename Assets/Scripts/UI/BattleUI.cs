@@ -13,11 +13,15 @@ public class BattleUI : MonoSingleton<BattleUI>
     [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private TextMeshProUGUI playerCombatText;
     [SerializeField] private TextMeshProUGUI enemyCombatText;
+    [SerializeField] private TextMeshProUGUI battleResultText;
     [Header("Combat Texts")]
     [Space]
     [SerializeField] private string attackText = $"Attack";
     [SerializeField] private string guardText = $"Guard";
     [SerializeField] private string healText = $"Heal";
+    [Space]
+    [SerializeField] private string winText = $"You Win";
+    [SerializeField] private string loseText = $"You Lose";
     [Header("Delays")]
     [Space]
     [SerializeField] private float hideCombatTextDelay = 1f;
@@ -49,10 +53,25 @@ public class BattleUI : MonoSingleton<BattleUI>
 
     private void Start()
     {
+        BattleController.Instance.OnPlayerTurnStart += BattleController_PlayerTurn_Reaction;
+        BattleController.Instance.OnPlayerOutOfHP += BattleController_PlayerOutOfHP_Reaction;
+        BattleController.Instance.OnEnemyOutOfHP += BattleController_EnemyOutOfHP_Reaction;
+
         CashComponents();
         SetContentActivationState(false);
         playerCombatText.text = $"";
         enemyCombatText.text = $"";
+        battleResultText.text = $"";
+    }
+
+    private void OnDestroy()
+    {
+        if(BattleController.Instance)
+        {
+            BattleController.Instance.OnPlayerTurnStart -= BattleController_PlayerTurn_Reaction;
+            BattleController.Instance.OnPlayerOutOfHP -= BattleController_PlayerOutOfHP_Reaction;
+            BattleController.Instance.OnEnemyOutOfHP -= BattleController_EnemyOutOfHP_Reaction;
+        }
     }
 
     public void ShowMenu()
@@ -119,6 +138,21 @@ public class BattleUI : MonoSingleton<BattleUI>
     private void SetContentActivationState(bool isActive)
     {
         content.gameObject.SetActive(isActive);
+    }
+
+    private void BattleController_PlayerTurn_Reaction()
+    {
+        SetButtonsActivationState(true);
+    }
+
+    private void BattleController_PlayerOutOfHP_Reaction()
+    {
+        battleResultText.text = loseText;
+    }
+
+    private void BattleController_EnemyOutOfHP_Reaction()
+    {
+        battleResultText.text = winText;
     }
 
     private IEnumerator ShowCombatActionTextCoroutine(string combatText)

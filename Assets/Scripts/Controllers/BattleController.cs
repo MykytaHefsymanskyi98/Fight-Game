@@ -8,15 +8,50 @@ public class BattleController : MonoSingleton<BattleController>
     [Header("Turns Data")]
     [Space]
     [SerializeField] private int currentTurnNumber = 1;
+    [Header("Delays")]
+    [Space]
+    [SerializeField] private float characterTurnDelay = 1f;
 
-    private bool playerTurn = false;
+    private bool playerTurn = true;
 
     #region Events Methods
     public event Action<float> OnPlayerAttackFinished;
+    public event Action<float> OnEnemyAttackFinished;
+    public event Action OnEnemyTurnStart;
+    public event Action OnPlayerTurnStart;
+    public event Action OnPlayerOutOfHP;
+    public event Action OnEnemyOutOfHP; 
 
     public void PlayerAttackFinishedCommand(float damage)
     {
         OnPlayerAttackFinished?.Invoke(damage);
+        StartCoroutine(StartEnemyTurnCoroutine());
+    }
+
+    public void EnemyAttackFinishedCommand(float damage)
+    {
+        OnEnemyAttackFinished?.Invoke(damage);
+        StartCoroutine(StartPlayerTurnCoroutine());
+    }
+
+    private void EnemyTurnStartCommand()
+    {
+        OnEnemyTurnStart?.Invoke();
+    }
+
+    private void PlayerTurnStartCommand()
+    {
+        OnPlayerTurnStart?.Invoke();
+    }
+
+    public void PlayerOutOfHPCommand()
+    {
+        OnPlayerOutOfHP?.Invoke();
+    }
+
+    public void EnemyOutOfHPCommad()
+    {
+        OnEnemyOutOfHP?.Invoke();
     }
     #endregion Events Methods
 
@@ -43,6 +78,11 @@ public class BattleController : MonoSingleton<BattleController>
         }
     }
 
+    public void SetEnemyTurn()
+    {
+        playerTurn = false;
+    }
+
     #region Events Reaction Methods
     private void MainUI_CharacterChoosen_Reaction(Characters _)
     {
@@ -65,4 +105,16 @@ public class BattleController : MonoSingleton<BattleController>
         Debug.Log($"Heal");
     }
     #endregion Events Reaction Methods
+
+    private IEnumerator StartEnemyTurnCoroutine()
+    {
+        yield return new WaitForSeconds(characterTurnDelay);
+        EnemyTurnStartCommand();
+    }
+
+    private IEnumerator StartPlayerTurnCoroutine()
+    {
+        yield return new WaitForSeconds(characterTurnDelay);
+        PlayerTurnStartCommand();
+    }
 }

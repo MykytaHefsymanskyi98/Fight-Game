@@ -9,7 +9,7 @@ public class Enums
 
 public enum Characters
 {
-    Ursa, SkywrathMage, Necrophos
+    Ursa, SkywrathMage, Necrophos, Monster
 }
 
 public enum Characteristics

@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7949478611496047499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -375,23 +375,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204148016849973, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204148016849973, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977344365492, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Sprite
@@ -399,27 +399,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ecc8b1d65ff6fe24e83ba03c026add6b, type: 3}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979197180750, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979197180750, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979239345830, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Name
-      value: Necrophos Preset Button
+      value: Necrophos Preset
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979239345831, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Pivot.x
@@ -531,23 +531,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204148016849973, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204148016849973, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977344365492, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Sprite
@@ -555,27 +555,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1c0afba9d4582374d845429afaaf4d31, type: 3}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979197180750, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979197180750, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979239345830, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Name
-      value: 'Skywrath Mage Preset Button '
+      value: Skywrath Mage Preset
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979239345831, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Pivot.x
@@ -687,47 +687,47 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 77204146188959463, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204148016849973, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 77204148016849973, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887977767678364, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979197180750, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979197180750, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979239345830, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Name
-      value: Ursa Preset Button
+      value: Ursa Preset
       objectReference: {fileID: 0}
     - target: {fileID: 1644887979239345831, guid: ab5e433905e8a714cb37962d5b7e54db, type: 3}
       propertyPath: m_Pivot.x
