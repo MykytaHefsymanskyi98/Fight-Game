@@ -1516,6 +1516,7 @@ GameObject:
   - component: {fileID: 3265387928037801158}
   - component: {fileID: 5760879028848445520}
   - component: {fileID: 7390455438492946568}
+  - component: {fileID: 1912172323}
   m_Layer: 5
   m_Name: Enemy Health Bar
   m_TagString: Untagged
@@ -1583,6 +1584,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1912172323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281948503722603176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873d34759940475478bdfe0de15d43f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarImage: {fileID: 2560665933191435404}
+  updateSpeed: 5
 --- !u!1 &4365279935183613146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,6 +1609,7 @@ GameObject:
   - component: {fileID: 7257845257071738700}
   - component: {fileID: 2790214421690374538}
   - component: {fileID: 1174686061118879269}
+  - component: {fileID: 161387671}
   m_Layer: 5
   m_Name: Player Health Bar
   m_TagString: Untagged
@@ -1661,6 +1677,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &161387671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365279935183613146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873d34759940475478bdfe0de15d43f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarImage: {fileID: 959030056}
+  updateSpeed: 5
 --- !u!1 &7016011275447223488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,9 +1995,13 @@ MonoBehaviour:
   playerCombatText: {fileID: 969029541}
   enemyCombatText: {fileID: 45494081}
   battleResultText: {fileID: 829633902}
+  playerHealthBar: {fileID: 161387671}
+  enemyHealthBar: {fileID: 1912172323}
   attackText: Attack
   guardText: Guard
   healText: Heal
+  winText: You Win
+  loseText: You Lose
   hideCombatTextDelay: 1
 --- !u!1 &7016011275875563681
 GameObject:

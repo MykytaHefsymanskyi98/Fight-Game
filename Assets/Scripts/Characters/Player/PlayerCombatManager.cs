@@ -28,10 +28,13 @@ public class PlayerCombatManager : CombatManager
         if (CurrentHealthAmount > 0)
         {
             DamageTakenCommand();
+            float changedValue = CurrentHealthAmount.Remap(0, StartHealthAmount, 0, 1f);
+            BattleUI.Instance.UpdatePlayerHealthBar(changedValue);
         }
         else
         {
             BattleController.Instance.PlayerOutOfHPCommand();
+            BattleUI.Instance.UpdatePlayerHealthBar(0f);
         }
     }
 }

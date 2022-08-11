@@ -2164,6 +2164,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 896514743}
     m_Modifications:
+    - target: {fileID: 161387671, guid: 86190d4a7e3c71941aeaa0136fd6fd7e, type: 3}
+      propertyPath: updateSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912172323, guid: 86190d4a7e3c71941aeaa0136fd6fd7e, type: 3}
+      propertyPath: updateSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7016011275670670508, guid: 86190d4a7e3c71941aeaa0136fd6fd7e, type: 3}
       propertyPath: m_Name
       value: 'Battle UI '

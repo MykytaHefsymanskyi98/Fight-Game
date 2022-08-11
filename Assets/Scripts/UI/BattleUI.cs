@@ -14,6 +14,10 @@ public class BattleUI : MonoSingleton<BattleUI>
     [SerializeField] private TextMeshProUGUI playerCombatText;
     [SerializeField] private TextMeshProUGUI enemyCombatText;
     [SerializeField] private TextMeshProUGUI battleResultText;
+    [Header("Health Bars")]
+    [Space]
+    [SerializeField] private HealthBar playerHealthBar;
+    [SerializeField] private HealthBar enemyHealthBar;
     [Header("Combat Texts")]
     [Space]
     [SerializeField] private string attackText = $"Attack";
@@ -59,9 +63,8 @@ public class BattleUI : MonoSingleton<BattleUI>
 
         CashComponents();
         SetContentActivationState(false);
-        playerCombatText.text = $"";
-        enemyCombatText.text = $"";
-        battleResultText.text = $"";
+
+        SetStartParameters();
     }
 
     private void OnDestroy()
@@ -91,12 +94,12 @@ public class BattleUI : MonoSingleton<BattleUI>
 
     public void UpdatePlayerHealthBar(float value)
     {
-
+        playerHealthBar.UpdateHealthBar(value);
     }
 
     public void UpdateEnemyHealthBar(float value)
     {
-
+        enemyHealthBar.UpdateHealthBar(value);
     }
 
     #region Buttons Methods
@@ -133,6 +136,13 @@ public class BattleUI : MonoSingleton<BattleUI>
     private void CashComponents()
     {
         content = transform.GetChild(0);
+    }
+
+    private void SetStartParameters()
+    {
+        playerCombatText.text = $"";
+        enemyCombatText.text = $"";
+        battleResultText.text = $"";
     }
 
     private void SetContentActivationState(bool isActive)

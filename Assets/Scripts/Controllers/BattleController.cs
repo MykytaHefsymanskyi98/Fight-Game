@@ -92,17 +92,17 @@ public class BattleController : MonoSingleton<BattleController>
 
     private void BattleUI_AttackButtonPressed_Reaction()
     {
-        Debug.Log($"Attack");
+        
     }
 
     private void BattleUI_GuardButtonPressed_Reaction()
     {
-        Debug.Log($"Guard");
+        
     }
 
     private void BattleUI_HealButtonPressed_Reaction()
     {
-        Debug.Log($"Heal");
+       
     }
     #endregion Events Reaction Methods
 

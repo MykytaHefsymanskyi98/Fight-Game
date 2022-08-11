@@ -35,10 +35,13 @@ public class EnemyCombatManager : CombatManager
         if(CurrentHealthAmount > 0)
         {
             DamageTakenCommand();
+            float changedValue = CurrentHealthAmount.Remap(0, StartHealthAmount, 0, 1f);
+            BattleUI.Instance.UpdateEnemyHealthBar(changedValue);
         }
         else
         {
             BattleController.Instance.EnemyOutOfHPCommad();
+            BattleUI.Instance.UpdateEnemyHealthBar(0f);
         }
     }
 
