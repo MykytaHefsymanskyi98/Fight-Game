@@ -11,8 +11,8 @@ public class CharacterPreset : MonoBehaviour
     [Space]
     [SerializeField] private Slider damageSlider;
     [SerializeField] private Slider healthSlider;
-    [SerializeField] private Toggle decreaseChanceOfIncDamageToggle;
-    [SerializeField] private Toggle increaseChanceOfDamageDealtToggle;
+    [SerializeField] private Slider decreaseChanceOfIncDamageSlider;
+    [SerializeField] private Slider increaseChanceOfDamageDealtSlider;
     [Space]
     [SerializeField] private Image characterIcon;
 
@@ -36,7 +36,7 @@ public class CharacterPreset : MonoBehaviour
     {
         damageSlider.value = parametersSO.DamageAmount;
         healthSlider.value = parametersSO.HealthAmount;
-        decreaseChanceOfIncDamageToggle.isOn = parametersSO.ChanceToDecreaseIncomingDamage;
-        increaseChanceOfDamageDealtToggle.isOn = parametersSO.ChanceToIncreaseDamageDealt;
+        decreaseChanceOfIncDamageSlider.value = parametersSO.ChanceToDecreaseIncomingDamage;
+        increaseChanceOfDamageDealtSlider.value = parametersSO.ChanceToIncreaseDamageDealt;
     }
 }

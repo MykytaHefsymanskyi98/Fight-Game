@@ -11,3 +11,8 @@ public enum Characters
 {
     Ursa, SkywrathMage, Necrophos
 }
+
+public enum Characteristics
+{
+    Value, Chance
+}

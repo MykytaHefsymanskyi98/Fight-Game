@@ -1,10 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerAnimationManager : MonoBehaviour
 {
     private Animator animator;
+
+    #region Events Methods
+    public event Action OnAttackFinished;
+
+    public void AttackFinishedCommand()
+    {
+        OnAttackFinished?.Invoke();
+    }
+    #endregion Events Methods
 
     private void OnEnable()
     {

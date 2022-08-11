@@ -22,6 +22,8 @@ public class PlayerComponentsManager : MonoBehaviour
         BattleUI.Instance.OnAttackButtonPressed += BattleUI_AttackButtonPressed_Reaction;
         BattleUI.Instance.OnGuardButtonPressed += BattleUI_GuardButtonPressed_Reaction;
         BattleUI.Instance.OnHealButtonPressed += BattleUI_HealButtonPressed_Reaction;
+
+        animationManager.OnAttackFinished += AnimationManager_AttackFinished_Reaction;
     }
 
     private void OnDestroy()
@@ -36,6 +38,8 @@ public class PlayerComponentsManager : MonoBehaviour
             BattleUI.Instance.OnGuardButtonPressed -= BattleUI_GuardButtonPressed_Reaction;
             BattleUI.Instance.OnHealButtonPressed -= BattleUI_HealButtonPressed_Reaction;
         }
+
+        animationManager.OnAttackFinished -= AnimationManager_AttackFinished_Reaction;
     }
 
     private void MainUI_CharacterChoosen_Reaction(Characters character)
@@ -57,5 +61,10 @@ public class PlayerComponentsManager : MonoBehaviour
     private void BattleUI_HealButtonPressed_Reaction()
     {
         animationManager.SetHealState();
+    }
+
+    private void AnimationManager_AttackFinished_Reaction()
+    {
+
     }
 }

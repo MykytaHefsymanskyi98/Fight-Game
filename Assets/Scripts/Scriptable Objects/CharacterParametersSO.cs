@@ -12,13 +12,13 @@ public class CharacterParametersSO : ScriptableObject
     [Space]
     [Range(0, 100f)] [SerializeReference] private float damageAmount = 1f;
     [Range(0, 100f)] [SerializeReference] private float healthAmount = 1f;
-    [SerializeReference] private bool chanceToDecreaseIncomingDamage = false;
-    [SerializeReference] private bool chanceToIncreaseDamageDealt = false;
+    [Range(0, 100f)] [SerializeReference] private float chanceToDecreaseIncomingDamage = 1f;
+    [Range(0, 100f)] [SerializeReference] private float chanceToIncreaseDamageDealt = 1f;
 
     public float DamageAmount { get => damageAmount; }
     public float HealthAmount { get => healthAmount; }
-    public bool ChanceToDecreaseIncomingDamage { get => chanceToDecreaseIncomingDamage; }
-    public bool ChanceToIncreaseDamageDealt { get => chanceToIncreaseDamageDealt; }
+    public float ChanceToDecreaseIncomingDamage { get => chanceToDecreaseIncomingDamage; }
+    public float ChanceToIncreaseDamageDealt { get => chanceToIncreaseDamageDealt; }
 
     public Characters Character { get => character; }
 }

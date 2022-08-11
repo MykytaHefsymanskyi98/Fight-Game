@@ -11,6 +11,16 @@ public class BattleUI : MonoSingleton<BattleUI>
     [Space]
     [SerializeField] private List<Button> battleButtonsList = new List<Button>();
     [SerializeField] private TextMeshProUGUI turnText;
+    [SerializeField] private TextMeshProUGUI playerCombatText;
+    [SerializeField] private TextMeshProUGUI enemyCombatText;
+    [Header("Combat Texts")]
+    [Space]
+    [SerializeField] private string attackText = $"Attack";
+    [SerializeField] private string guardText = $"Guard";
+    [SerializeField] private string healText = $"Heal";
+    [Header("Delays")]
+    [Space]
+    [SerializeField] private float hideCombatTextDelay = 1f;
 
     private const string TurnString = "Turn ";
 
@@ -41,6 +51,8 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         CashComponents();
         SetContentActivationState(false);
+        playerCombatText.text = $"";
+        enemyCombatText.text = $"";
     }
 
     public void ShowMenu()
@@ -63,18 +75,21 @@ public class BattleUI : MonoSingleton<BattleUI>
     {
         SetButtonsActivationState(false);
         AttackButtonPressedCommand();
+        StartCoroutine(ShowCombatActionTextCoroutine(attackText));
     }
 
     public void GuardButtonPressed()
     {
         SetButtonsActivationState(false);
         GuardButtonPressedCommand();
+        StartCoroutine(ShowCombatActionTextCoroutine(guardText));
     }
 
     public void HealButtonPressed()
     {
         SetButtonsActivationState(false);
         HealButtonPressedCommand();
+        StartCoroutine(ShowCombatActionTextCoroutine(healText));
     }
 
     public void SetButtonsActivationState(bool isActive)
@@ -94,5 +109,12 @@ public class BattleUI : MonoSingleton<BattleUI>
     private void SetContentActivationState(bool isActive)
     {
         content.gameObject.SetActive(isActive);
+    }
+
+    private IEnumerator ShowCombatActionTextCoroutine(string combatText)
+    {
+        playerCombatText.text = combatText;
+        yield return new WaitForSeconds(hideCombatTextDelay);
+        playerCombatText.text = $"";
     }
 }

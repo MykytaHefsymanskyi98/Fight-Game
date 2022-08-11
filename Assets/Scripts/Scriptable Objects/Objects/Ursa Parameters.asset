@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a79e61566b52745acf30e65d2783aa, type: 3}
   m_Name: Ursa Parameters
   m_EditorClassIdentifier: 
+  character: 0
   damageAmount: 80
   healthAmount: 50
-  chanceToDecreaseIncomingDamage: 0
-  chanceToIncreaseDamageDealt: 1
+  chanceToDecreaseIncomingDamage: 10
+  chanceToIncreaseDamageDealt: 40
