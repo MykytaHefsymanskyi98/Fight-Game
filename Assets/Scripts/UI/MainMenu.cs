@@ -8,4 +8,9 @@ public class MainMenu : UICanvas
     {
         CashComponents();
     }
+
+    private void Start()
+    {
+        SetContentActivationState(true);
+    }
 }
